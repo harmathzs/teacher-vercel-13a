@@ -13,7 +13,11 @@ export default class Teachers extends React.Component {
   componentDidMount() {
     // callout for teachers data
     fetch('http://localhost:3333/teachers')
-    .then(console.log)
+    .then(data=>data.json())
+    .then(data=>{
+        console.log('got data: ', data)
+        this.setState({teachers: data})
+    })
     .catch(console.warn)
     .finally(()=>{
         console.log('fetch done')
